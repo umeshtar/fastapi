@@ -1,10 +1,11 @@
 from fastapi import FastAPI
 
-from routes import rooms
+from routes import rooms, bookings
 
 app = FastAPI()
 
-app.include_router(rooms.router, prefix='/room')
+app.include_router(rooms.router, prefix='/rooms')
+app.include_router(bookings.router, prefix='/bookings')
 
 
 @app.get("/", tags=['root'])

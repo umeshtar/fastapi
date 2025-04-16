@@ -59,7 +59,7 @@ class DummyDataBase:
         """
         return self._read_data()
 
-    def retrieve(self, pk):
+    def retrieve(self, pk: uuid.UUID):
         """
         Retrieve a single record by its primary key.
 
@@ -71,7 +71,7 @@ class DummyDataBase:
         """
         data = self._read_data()
         for item in data:
-            if item.get("id") == pk:
+            if item.get("id") == str(pk):
                 return item
         return None
 
@@ -92,7 +92,7 @@ class DummyDataBase:
         self._write_data(data)
         return kwargs
 
-    def update(self, pk, **kwargs):
+    def update(self, pk: uuid.UUID, **kwargs):
         """
         Update an existing record with new field values.
 
@@ -105,13 +105,13 @@ class DummyDataBase:
         """
         data = self._read_data()
         for index, item in enumerate(data):
-            if item.get("id") == pk:
+            if item.get("id") == str(pk):
                 data[index].update(kwargs)
                 self._write_data(data)
                 return data[index]
         return None
 
-    def delete(self, pk):
+    def delete(self, pk: uuid.UUID) -> object:
         """
         Delete a record by its primary key.
 
@@ -122,16 +122,16 @@ class DummyDataBase:
             bool: True if a record was deleted, False otherwise.
         """
         data = self._read_data()
-        new_data = [item for item in data if item.get("id") != pk]
+        new_data = [item for item in data if item.get("id") != str(pk)]
         self._write_data(new_data)
         return len(data) != len(new_data)
 
 
 if __name__ == '__main__':
-    db = DummyDataBase(model='employees')
+    db = DummyDataBase(model='test')
 
     # Create example
-    record = db.create(name="Alice", department="HR")
+    record = db.create(name="Umesh", department="IT")
     print("Created:", record)
 
     # Retrieve all
@@ -141,7 +141,7 @@ if __name__ == '__main__':
     print("Single:", db.retrieve(record["id"]))
 
     # Update
-    db.update(record["id"], department="Finance")
+    print("Updated: ", db.update(record["id"], department="EE"))
 
     # Delete
-    db.delete(record["id"])
+    print("Deleted: ", db.delete(record["id"]))
