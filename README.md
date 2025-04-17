@@ -86,6 +86,12 @@ This is a simple Hotel Booking API built using FastAPI. It allows you to manage 
 
 The API uses a very basic file-based "database" implemented in `data.py`.  Data is stored in JSON files within the `database` directory.  This is *not* a production-ready database, but it's sufficient for simple testing.
 
+## Error Logging
+
+* Automatically captures and logs all uncaught exceptions.
+* Stores error details like timestamp, message, and traceback.
+* Returns a standardized JSON response with status code `500`.
+
 ## Models
 
 The `models.py` file defines the data models used by the API:
@@ -110,6 +116,6 @@ The `routes` directory contains the route handlers for the API:
 
 * **Dummy Database:** The `DummyDataBase` class is a very basic database implementation for demonstration purposes only.
 * **Date Handling:** The `BookingDateTimeModel` in `models.py` contains the core logic for calculating the number of nights and checking room availability.  The docstrings explain the assumptions made about check-in/check-out times.
-* **Error Handling:** The API uses FastAPI's `HTTPException` to handle errors, such as when a room or booking is not found, or when a room is not available for the requested dates.
+* **Error Handling:** The API uses FastAPI's `HTTPException` to handle errors, such as when a room or booking is not found, or when a room is not available for the requested dates. Unhandled exception are handled using global handler.
 * **Form Data:** The booking creation endpoint (`POST /bookings/`) uses `Form(...)` to receive data.  This means you should send the data as form data, not as JSON.
 * **Deprecation:** The `available` field in the `Room` model, and the `nights` field in the `BookingBaseModel` are deprecated. The availability of a room is now determined dynamically, and the number of nights is calculated within the `BookingDateTimeModel`.
