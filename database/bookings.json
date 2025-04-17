@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "start_datetime": "2025-04-11T08:31:15.752000Z",
+        "end_datetime": "2025-04-17T08:31:15.752000Z",
+        "room_id": "1853cfd6-4cb3-48f7-8fbd-c5146502ad8f",
+        "guest_name": "Umesh",
+        "nights": 7,
+        "total_price": 10500.0,
+        "id": "0978ab93-a216-46e6-a4cd-1517dfb95225"
+    },
+    {
+        "start_datetime": "2025-04-01T13:31:15.752000Z",
+        "end_datetime": "2025-04-07T08:31:15.752000Z",
+        "room_id": "1853cfd6-4cb3-48f7-8fbd-c5146502ad8f",
+        "guest_name": "Umesh",
+        "nights": 6,
+        "total_price": 9000.0,
+        "id": "f64fc7a4-cabb-4fb8-b3f4-d58d0c13cb41"
+    }
+]

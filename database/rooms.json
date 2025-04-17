@@ -3,6 +3,72 @@
         "room_type": "Single",
         "price_per_night": 1500.0,
         "available": true,
-        "id": "803b3b02-b823-4b54-8d52-9550ff761c49"
+        "id": "1853cfd6-4cb3-48f7-8fbd-c5146502ad8f"
+    },
+    {
+        "room_type": "Single",
+        "price_per_night": 1500.0,
+        "available": true,
+        "id": "d20b861c-4728-41fc-8318-6ac8ce0bc4d0"
+    },
+    {
+        "room_type": "Single",
+        "price_per_night": 1500.0,
+        "available": true,
+        "id": "5cc43403-2c68-433a-950c-f6c19aafe380"
+    },
+    {
+        "room_type": "Single",
+        "price_per_night": 1500.0,
+        "available": true,
+        "id": "2fecde83-a9e7-4a5f-a9e7-1d29a8b9ba5a"
+    },
+    {
+        "room_type": "Double",
+        "price_per_night": 2500.0,
+        "available": true,
+        "id": "08f209b1-7d6b-4635-bf13-b2fdd3af57a7"
+    },
+    {
+        "room_type": "Double",
+        "price_per_night": 2500.0,
+        "available": true,
+        "id": "c041b4fc-a18a-48cd-875b-be89ca55f847"
+    },
+    {
+        "room_type": "Double",
+        "price_per_night": 2500.0,
+        "available": true,
+        "id": "5527e717-17c3-4417-bebb-5c0cd6e1052a"
+    },
+    {
+        "room_type": "Double",
+        "price_per_night": 2500.0,
+        "available": true,
+        "id": "9c853b09-900b-4fed-8eb5-1a5a3a87f0bb"
+    },
+    {
+        "room_type": "Suite",
+        "price_per_night": 4000.0,
+        "available": true,
+        "id": "dc1df617-fb77-403e-b1ac-3c5b984794a6"
+    },
+    {
+        "room_type": "Suite",
+        "price_per_night": 4000.0,
+        "available": true,
+        "id": "563ac78d-8d04-4d50-b29a-86ec6e41757e"
+    },
+    {
+        "room_type": "Suite",
+        "price_per_night": 4000.0,
+        "available": true,
+        "id": "c194af72-3658-4b80-8c8c-65748198a6f1"
+    },
+    {
+        "room_type": "Suite",
+        "price_per_night": 4000.0,
+        "available": true,
+        "id": "83c6b3e2-2006-45bd-9259-389289ad045b"
     }
 ]
