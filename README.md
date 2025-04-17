@@ -52,7 +52,15 @@ This is a simple Hotel Booking API built using FastAPI. It allows you to manage 
     ```
 
     This will start the FastAPI application with hot reloading, so any changes you make to the code will be automatically reflected.
+    
+6. **Testing:**
 
+    ```bash
+    http://127.0.0.1:8000/docs#/
+    ```
+    
+   All endpoints and forms can be tested using auto generated FastAPI Swagger UI.
+   
 ## API Endpoints
 
 ### Rooms
