@@ -9,17 +9,18 @@ from models import Booking, BookingBaseModel, Tags
 
 router = APIRouter()
 
-db = DummyDataBase(model='bookings')
-rooms_db = DummyDataBase(model='rooms')
-
 
 @router.get('/', response_model=list[Booking], tags=[Tags.bookings])
 def get_all_bookings():
+    """ Retrieve all bookings from the dummy database. """
+    db = DummyDataBase(model='bookings')
     return db.retrieve_all()
 
 
 @router.get('/{booking_id}', response_model=Booking, tags=[Tags.bookings])
 def get_single_booking(booking_id: UUID):
+    """ Retrieve a single booking by its UUID. """
+    db = DummyDataBase(model='bookings')
     booking = db.retrieve(booking_id)
     if not booking:
         raise HTTPException(status_code=404, detail='Booking not found')
@@ -28,6 +29,14 @@ def get_single_booking(booking_id: UUID):
 
 @router.post('/', response_model=Booking, tags=[Tags.bookings])
 def room_booking(booking_data: Annotated[BookingBaseModel, Form()]):
+    """
+        Create a new booking if the room is available.
+        Validates room existence, availability in the given date range,
+        and ensures proper booking dates.
+    """
+    db = DummyDataBase(model='bookings')
+    rooms_db = DummyDataBase(model='rooms')
+
     room_id = booking_data.room_id
     room = rooms_db.retrieve(room_id)
     bookings = [row for row in db.retrieve_all() if row.get('room_id') == str(room_id)]
@@ -58,7 +67,9 @@ def room_booking(booking_data: Annotated[BookingBaseModel, Form()]):
 
 @router.delete('/{booking_id}', tags=[Tags.bookings])
 def cancel_booking(booking_id: UUID):
+    """ Cancel an existing booking. """
     # Cancel booking and mark room as available
+    db = DummyDataBase(model='bookings')
     booking = db.retrieve(booking_id)
     if not booking:
         raise HTTPException(status_code=400, detail='Booking not found')

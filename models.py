@@ -4,8 +4,6 @@ from uuid import UUID
 
 from pydantic import BaseModel, Field
 
-from data import DummyDataBase
-
 
 class Tags(str, Enum):
     rooms = 'Rooms'

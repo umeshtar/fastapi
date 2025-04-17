@@ -9,13 +9,11 @@ from models import Room, RoomBaseModel, RoomType, Tags
 
 router = APIRouter()
 
-# Initialize the dummy database for rooms
-db = DummyDataBase(model='rooms')
-
 
 @router.get('/', response_model=list[Room], tags=[Tags.rooms])
 def get_rooms(room_type: Annotated[RoomType | None, Query()] = None):
     """ Retrieve all rooms, optionally filtering by room_type. """
+    db = DummyDataBase(model='rooms')
     rooms = db.retrieve_all()
     if room_type:
         rooms = [room for room in rooms if room.get('room_type') == room_type]
@@ -25,6 +23,7 @@ def get_rooms(room_type: Annotated[RoomType | None, Query()] = None):
 @router.get('/{room_id}', response_model=Room, tags=[Tags.rooms])
 def get_single_room(room_id: UUID):
     """ Retrieve a single room by its UUID. """
+    db = DummyDataBase(model='rooms')
     room = db.retrieve(room_id)
     if room is None:
         raise HTTPException(status_code=400, detail='Room not found')
@@ -34,6 +33,7 @@ def get_single_room(room_id: UUID):
 @router.post('/', response_model=Room, tags=[Tags.rooms])
 def create_room(room_data: Annotated[RoomBaseModel, Form()]):
     """ Create a new room record. """
+    db = DummyDataBase(model='rooms')
     room = db.create(**jsonable_encoder(room_data))
     if not room:
         raise HTTPException(status_code=500, detail='Something went wrong while creating room')
@@ -43,6 +43,7 @@ def create_room(room_data: Annotated[RoomBaseModel, Form()]):
 @router.put('/{room_id}', response_model=Room, tags=[Tags.rooms])
 def update_room(room_id: UUID, room_data: Annotated[RoomBaseModel, Form()]):
     """ Update an existing room's data. """
+    db = DummyDataBase(model='rooms')
     room = db.retrieve(room_id)
     if room is None:
         raise HTTPException(status_code=400, detail='Room not found')
@@ -56,6 +57,7 @@ def update_room(room_id: UUID, room_data: Annotated[RoomBaseModel, Form()]):
 @router.delete('/{room_id}', tags=[Tags.rooms])
 def delete_room(room_id: UUID):
     """ Delete a room by its UUID. """
+    db = DummyDataBase(model='rooms')
     room = db.retrieve(room_id)
     if room is None:
         raise HTTPException(status_code=400, detail='Room not found')

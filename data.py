@@ -29,7 +29,7 @@ class DummyDataBase:
         if not os.path.exists(self.file_name):
             with open(self.file_name, 'w') as f:
                 json.dump([], f)
-
+    
     def _read_data(self):
         """
         Internal helper to read all data from the JSON file.
