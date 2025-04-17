@@ -59,7 +59,7 @@ This is a simple Hotel Booking API built using FastAPI. It allows you to manage 
     http://127.0.0.1:8000/docs#/
     ```
     
-   All endpoints and forms can be tested using auto generated FastAPI Documentation.
+   All endpoints and forms can be tested using auto generated FastAPI Swagger UI.
    
 ## API Endpoints
 
