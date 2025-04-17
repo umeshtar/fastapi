@@ -48,7 +48,7 @@ This is a simple Hotel Booking API built using FastAPI. It allows you to manage 
 4.  **Run the application:**
 
     ```bash
-    uvicorn main:app --reload
+    fastapi dev main.py
     ```
 
     This will start the FastAPI application with hot reloading, so any changes you make to the code will be automatically reflected.
