@@ -1,1 +1,8 @@
-[]
+[
+    {
+        "room_type": "Single",
+        "price_per_night": 1.0,
+        "available": true,
+        "id": "2ca422d5-5d81-483d-88b2-1e8951030395"
+    }
+]

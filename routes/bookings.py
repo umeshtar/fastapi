@@ -38,6 +38,10 @@ def room_booking(booking_data: Annotated[BookingBaseModel, Form()]):
     if booking_data.is_room_available(bookings) is False:
         raise HTTPException(status_code=400, detail="Room is not available for selected date range")
 
+    # Validate Start and End Date
+    if booking_data.end_datetime <= booking_data.start_datetime:
+        raise HTTPException(status_code=400, detail="End datetime shall be greater than Start datetime")
+
     # Calculate Total price of booking
     booking_data.nights = booking_data.calculate_nights()
     total_price = booking_data.nights * room.get('price_per_night')
