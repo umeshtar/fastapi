@@ -41,14 +41,14 @@ This is a simple Hotel Booking API built using FastAPI. It allows you to manage 
 3.  **Install dependencies:**
 
     ```bash
-    pip install fastapi "uvicorn[standard]"  # Install FastAPI and Uvicorn
+    pip install "fastapi[standard]"
     ```
     Pydantic is a dependency of FastAPI, so it will be installed automatically.
 
 4.  **Run the application:**
 
     ```bash
-    uvicorn main:app --reload
+    fastapi dev main.py
     ```
 
     This will start the FastAPI application with hot reloading, so any changes you make to the code will be automatically reflected.
