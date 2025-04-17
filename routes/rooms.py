@@ -62,6 +62,13 @@ def delete_room(room_id: UUID):
     if room is None:
         raise HTTPException(status_code=400, detail='Room not found')
 
+    # Check bookings for room to be deleted
+    bookings_db = DummyDataBase(model='bookings')
+    for b in bookings_db.retrieve_all():
+        if b.get('room_id') == str(room_id):
+            # Avoid deletion if booking found
+            raise HTTPException(status_code=400, detail='Can not delete room which is already booked')
+
     deleted = db.delete(room_id)
     if deleted is False:
         raise HTTPException(status_code=500, detail='Something Went Wrong while deleting room')
