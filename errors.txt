@@ -1,0 +1,848 @@
+Time: 2025-05-06 16:41:05.680777
+Error Message: No route exists for name "static" and params "path".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 31, in read_template
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 4, in top-level template code
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "static" and params "path".
+
+
+Time: 2025-05-06 16:43:03.746963
+Error Message: No route exists for name "read_item" and params "id".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 34, in read_item
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 7, in top-level template code
+    <h1><a href="{{ url_for('read_item', id=id) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "read_item" and params "id".
+
+
+Time: 2025-05-06 16:43:34.575640
+Error Message: No route exists for name "read_item" and params "id".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 35, in read_item
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 7, in top-level template code
+    <h1><a href="{{ url_for('read_item', id=id) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "read_item" and params "id".
+
+
+Time: 2025-05-06 16:43:57.633228
+Error Message: Must not be empty
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 35, in read_item
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 7, in top-level template code
+    <h1><a href="{{ url_for('read_item', pk=pk) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 658, in url_path_for
+    return route.url_path_for(name, **path_params)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 275, in url_path_for
+    path, remaining_params = replace_params(self.path_format, self.param_convertors, path_params)
+                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 112, in replace_params
+    value = convertor.to_string(value)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\convertors.py", line 29, in to_string
+    assert value, "Must not be empty"
+           ^^^^^
+AssertionError: Must not be empty
+
+
+Time: 2025-05-06 16:43:59.050729
+Error Message: Must not be empty
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 35, in read_item
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 7, in top-level template code
+    <h1><a href="{{ url_for('read_item', pk=pk) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 658, in url_path_for
+    return route.url_path_for(name, **path_params)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 275, in url_path_for
+    path, remaining_params = replace_params(self.path_format, self.param_convertors, path_params)
+                             ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 112, in replace_params
+    value = convertor.to_string(value)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\convertors.py", line 29, in to_string
+    assert value, "Must not be empty"
+           ^^^^^
+AssertionError: Must not be empty
+
+
+Time: 2025-05-06 16:44:27.709926
+Error Message: No route exists for name "static" and params "path".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 31, in read_template
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 4, in top-level template code
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "static" and params "path".
+
+
+Time: 2025-05-06 16:46:03.706217
+Error Message: No route exists for name "read_item" and params "id".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 31, in read_template
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 9, in top-level template code
+    <h1><a href="{{ url_for('read_item', id=id) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "read_item" and params "id".
+
+
+Time: 2025-05-06 16:46:36.692472
+Error Message: No route exists for name "read_template" and params "id".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 31, in read_template
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 9, in top-level template code
+    <h1><a href="{{ url_for('read_template', id=id) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "read_template" and params "id".
+
+
+Time: 2025-05-06 16:46:37.632230
+Error Message: No route exists for name "read_template" and params "id".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 31, in read_template
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 9, in top-level template code
+    <h1><a href="{{ url_for('read_template', id=id) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "read_template" and params "id".
+
+
+Time: 2025-05-06 16:46:58.329502
+Error Message: No route exists for name "read_template" and params "id".
+Error Traceback: Traceback (most recent call last):
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 714, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 734, in app
+    await route.handle(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\fastapi\routing.py", line 214, in run_endpoint_function
+    return await run_in_threadpool(dependant.call, **values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\concurrency.py", line 37, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\to_thread.py", line 56, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        func, args, abandon_on_cancel=abandon_on_cancel, limiter=limiter
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 2470, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\anyio\_backends\_asyncio.py", line 967, in run
+    result = context.run(func, *args)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\main.py", line 31, in read_template
+    return templates.TemplateResponse(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request=request, name="home.html", context={"id": pk}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 209, in TemplateResponse
+    return _TemplateResponse(
+        template,
+    ...<4 lines>...
+        background=background,
+    )
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 40, in __init__
+    content = template.render(context)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 1295, in render
+    self.environment.handle_exception()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\jinja2\environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "templates\home.html", line 9, in top-level template code
+    <h1><a href="{{ url_for('read_template', id=id) }}">Item ID: {{ id }}</a></h1>
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\templating.py", line 126, in url_for
+    return request.url_for(name, **path_params)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\requests.py", line 186, in url_for
+    url_path = url_path_provider.url_path_for(name, **path_params)
+  File "D:\Technobits\Umesh\Django_Projects\fastapi\.venv\Lib\site-packages\starlette\routing.py", line 661, in url_path_for
+    raise NoMatchFound(name, path_params)
+starlette.routing.NoMatchFound: No route exists for name "read_template" and params "id".
+
+
