@@ -4,7 +4,6 @@ from functools import lru_cache
 
 @lru_cache(maxsize=5)
 def calculate(x):
-    print('I am Called')
     return x * 5
 
 print(calculate(1))

@@ -3,7 +3,7 @@ from enum import Enum
 from uuid import UUID
 
 from pydantic import BaseModel, Field
-from sqlmodel import Field as SQLField, Session, SQLModel, create_engine, select
+from sqlmodel import Field as SQLField, SQLModel, create_engine, Relationship
 
 
 class Tags(str, Enum):
@@ -83,98 +83,79 @@ class Booking(BookingBaseModel):
     total_price: float = Field(gt=0)
 
 
-class Hero(SQLModel, table=True):
+# class Hero(SQLModel, table=True):
+#     id: int | None = SQLField(default=None, primary_key=True)
+#     name: str = SQLField(index=True)
+#     secret_name: str
+#     age: int | None = SQLField(default=None, index=True)
+
+class TeamBase(SQLModel):
+    name: str = SQLField(index=True)
+    headquarters: str
+
+
+class Team(TeamBase, table=True):
     id: int | None = SQLField(default=None, primary_key=True)
-    name: str = Field(index=True)
+
+    heroes: list["Hero"] = Relationship(back_populates="team")
+
+
+class TeamCreate(TeamBase):
+    pass
+
+
+class TeamPublic(TeamBase):
+    id: int
+
+
+class TeamUpdate(SQLModel):
+    name: str | None = None
+    headquarters: str | None = None
+
+
+class HeroBase(SQLModel):
+    name: str = SQLField(index=True)
     secret_name: str
-    age: int | None = Field(default=None, index=True)
+    age: int | None = SQLField(default=None, index=True)
+
+    team_id: int | None = SQLField(default=None, foreign_key="team.id")
+
+
+class Hero(HeroBase, table=True):
+    id: int | None = SQLField(default=None, primary_key=True)
+
+    team: Team | None = Relationship(back_populates="heroes")
+
+
+class HeroPublic(HeroBase):
+    id: int
+
+
+class HeroCreate(HeroBase):
+    pass
+
+
+class HeroUpdate(SQLModel):
+    name: str | None = None
+    secret_name: str | None = None
+    age: int | None = None
+    team_id: int | None = None
+
+
+class HeroPublicWithTeam(HeroPublic):
+    team: TeamPublic | None = None
+
+
+class TeamPublicWithHero(TeamPublic):
+    heroes: list[HeroPublic] = []
 
 
 sqlite_file_name = "database.db"
 sqlite_url = f"sqlite:///{sqlite_file_name}"
 
-engine = create_engine(sqlite_url, echo=True)
+connect_args = {"check_same_thread": False}
+engine = create_engine(sqlite_url, echo=True, connect_args=connect_args)
 
 
 def create_db_and_tables():
     SQLModel.metadata.create_all(engine)
-
-
-def create_heroes():
-    hero_1 = Hero(name="Deadpond", secret_name="Dive Wilson")
-    hero_2 = Hero(name="Spider-Boy", secret_name="Pedro Parqueador")
-    hero_3 = Hero(name="Rusty-Man", secret_name="Tommy Sharp", age=48)
-    hero_4 = Hero(name="Tarantula", secret_name="Natalia Roman-on", age=32)
-    hero_5 = Hero(name="Black Lion", secret_name="Trevor Challa", age=35)
-    hero_6 = Hero(name="Dr. Weird", secret_name="Steve Weird", age=36)
-    hero_7 = Hero(name="Captain North America", secret_name="Esteban Rogelios", age=93)
-
-    with Session(engine) as session:
-        session.add(hero_1)
-        session.add(hero_2)
-        session.add(hero_3)
-        session.add(hero_4)
-        session.add(hero_5)
-        session.add(hero_6)
-        session.add(hero_7)
-
-        session.commit()
-
-
-def update_heroes():
-    with Session(engine) as session:
-        statement = select(Hero).where(Hero.name == "Spider-Boy")
-        results = session.exec(statement)
-        hero_1 = results.one()
-        print("Hero 1:", hero_1)
-
-        statement = select(Hero).where(Hero.name == "Captain North America")
-        results = session.exec(statement)
-        hero_2 = results.one()
-        print("Hero 2:", hero_2)
-
-        hero_1.age = 16
-        hero_1.name = "Spider-Youngster"
-        session.add(hero_1)
-
-        hero_2.name = "Captain North America Except Canada"
-        hero_2.age = 110
-        session.add(hero_2)
-
-        session.commit()
-        session.refresh(hero_1)
-        session.refresh(hero_2)
-
-        print("Updated hero 1:", hero_1)
-        print("Updated hero 2:", hero_2)
-
-
-def delete_heroes():
-    with Session(engine) as session:
-        statement = select(Hero).where(Hero.name == "Spider-Youngster")
-        results = session.exec(statement)
-        hero = results.one()
-        print("Hero: ", hero)
-
-        session.delete(hero)
-        session.commit()
-
-        print("Deleted hero:", hero)
-
-        statement = select(Hero).where(Hero.name == "Spider-Youngster")
-        results = session.exec(statement)
-        hero = results.first()
-
-        if hero is None:
-            print("There's no hero named Spider-Youngster")
-
-
-def main():
-    create_db_and_tables()
-    create_heroes()
-    update_heroes()
-    delete_heroes()
-
-
-if __name__ == "__main__":
-    main()
